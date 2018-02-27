@@ -22,29 +22,13 @@
 # License along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
 ##############################################################################
-#
-# This is a template package file for Spack.  We've put "FIXME"
-# next to all the things you'll want to change. Once you've handled
-# them, you can save this file and test your package like this:
-#
-#     spack install socat
-#
-# You can edit this file again by typing:
-#
-#     spack edit socat
-#
-# See the Spack documentation for more information on packaging.
-# If you submit this package back to Spack as a pull request,
-# please first remove this boilerplate and all FIXME comments.
-#
 from spack import *
 
 
 class Socat(AutotoolsPackage):
-    """FIXME: Put a proper description of your package here."""
+    """Socat is a command line based utility that establishes two bidirectional byte streams and transfers data between them. Because the streams can be constructed from a large set of different types of data sinks and sources (see address types), and because lots of address options may be applied to the streams, socat can be used for many different purposes."""
 
-    # FIXME: Add a proper url for your package's homepage here.
-    homepage = "http://www.example.com"
+    homepage = "http://www.dest-unreach.org/socat/"
     url      = "http://www.dest-unreach.org/socat/download/socat-2.0.0-b9.tar.gz"
 
     version('2.0.0-b9', '5b05b7b86f073a133f7c7aaa453de280')
@@ -55,12 +39,3 @@ class Socat(AutotoolsPackage):
     version('1.7.2.4',  '2a15dc3362f49d543abdbacc267d0a41')
     version('1.7.1.3',  'f5cd212c511725864c4b5e08a22d3366')
     version('1.7.0.1',  '08cb551967f542b11816fa8c03bf1a00')
-
-    # FIXME: Add dependencies if required.
-    # depends_on('foo')
-
-    def configure_args(self):
-        # FIXME: Add arguments other than --prefix
-        # FIXME: If not needed delete this function
-        args = []
-        return args
