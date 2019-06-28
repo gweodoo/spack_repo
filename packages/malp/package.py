@@ -24,6 +24,7 @@
 ##############################################################################
 from spack import *
 
+
 class Malp(AutotoolsPackage):
     """
         MALP stands for Multi-Application on-Line Profiling
@@ -31,29 +32,26 @@ class Malp(AutotoolsPackage):
         overcoming common file-system limitations by relying
         on runtime coupling between running applications.
     """
-
+    force_autoreconf = True
     homepage = "http://malp.hpcframework.paratools.com"
-    url      = "http://france.paratools.com/MALP/MALP_2.1.tar.gz"
+    url = "https://france.paratools.com/MALP/MALP_2.1.tar.gz"
 
     version('2.2', 'd86f84214c772dfff07bad63624182f6')
     version('2.1', '7131ddf6d6523dbf802d4f705eb357932ab5ff18')
     version('2.0.0', '18d386726478144bed601c74ae079195')
 
-    depends_on('mpi')
-    depends_on('otf2', type=('build', 'link') )
-    depends_on('libgd', type=('build', 'link') )
+    depends_on('mpi', type=('build', 'link', 'run'))
+    depends_on('libgd', type=('build', 'link'))
     depends_on('node-js')
 
-    depends_on('graphviz +gts', type=('build', 'run'), when="+gts" )
-    depends_on('graphviz ~gts', type=('build', 'run'), when="-gts" )
+    depends_on('graphviz +gts', type=('build', 'run'), when="+gts")
+    depends_on('graphviz ~gts', type=('build', 'run'), when="-gts")
 
     variant('mpit', default=True, description='Enable MPIT support')
     variant('gts', default=True,
             description='Enable GNU Triangulation Support for graphviz support')
     variant('ompt', default=True,
             description='Enable OMPT support')
-    variant('posix', default=False,
-            description='Enable POSIX support')
     variant('mpmdcomp', default=False,
             description='Enable MPMD legacy support (process stealing)')
     variant('mpc', default=False,
@@ -64,32 +62,29 @@ class Malp(AutotoolsPackage):
 
     # Version URL
     def url_for_version(self, version):
-	url = "http://france.paratools.com/MALP/MALP_{0}.tar.gz".format(version)
-	return url
+        url = "https://france.paratools.com/MALP/MALP_{0}.tar.gz".format(
+            version)
+        return url
 
     def configure_args(self):
         spec = self.spec
-            
+
         config_args = [
-            '--with-otf2-config={0}/bin/otf2-config'.format(spec['otf2'].prefix),
             '--with-gd2={0}'.format(spec['libgd'].prefix)
         ]
 
-	if '+mpit' in spec:
-		config_args.append('--enable-mpit' )
+        if '+mpit' in spec:
+            config_args.append('--enable-mpit')
 
-	if '+ompt' in spec:
-		config_args.append('--enable-ompt' )
+        if '+ompt' in spec:
+            config_args.append('--enable-ompt')
 
-	if '+posix' in spec:
-		config_args.append('--enable-posix' )
-	
-	if '+mpmdc' in spec:
-		config_args.append('--enable-mpmdcompat' )
+        if '+mpmdc' in spec:
+            config_args.append('--enable-mpmdcompat')
 
-	if '+mpc' in spec:
-		config_args.append('--enable-mpmdcompat')
-		config_args.append('--disable-posix')
-		config_args.append('--with-mpi-compiler=mpc_cc')
+        if '+mpc' in spec:
+            config_args.append('--enable-mpmdcompat')
+            config_args.append('--disable-posix')
+            config_args.append('--with-mpi-compiler=mpc_cc')
 
-        return config_args 
+        return config_args

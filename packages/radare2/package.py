@@ -49,6 +49,8 @@ class Radare2(AutotoolsPackage):
     homepage = "https://www.rada.re"
     url      = "https://github.com/radare/radare2/archive/3.1.3.tar.gz"
 
+    depends_on('git', type='build')
+    
     version('3.1.3', sha256='e3198565b02b95c67da5c45e7f157b5a9e1c7d8afe0238bd5631459b0e7731fb')
     version('3.1.2', sha256='1fd1643c865322460e883e5fa0e59095ecac99add6262bc9aaf6cdd718423b7b')
     version('3.1.1', sha256='f04deec626ea0b57c7d3f0b4a936932ebfcbd0a62a13768702d85363d0148330')
@@ -59,6 +61,7 @@ class Radare2(AutotoolsPackage):
     version('2.8.0', sha256='633c1b59e8935f6157142e7bd134b262f07595263c31c6ca3a194dd987a46360')
     version('2.7.0', sha256='624074a3edf55ee1d24e7ab05d65cb88f9672f6689f8fcc8bdd4e95faf35dce0')
     version('2.6.9', sha256='2838a8c83f1b32f8d5a13264580ff37788b3c0ac072e7f6408e9f7adbef84ba2')
+
 
     def configure_args(self):
         args = []
