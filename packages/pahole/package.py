@@ -27,8 +27,8 @@ class Pahole(CMakePackage):
     """FIXME: ."""
 
     # FIXME: Add a proper url for your package's homepage here.
-    homepage = "https://lwn.net/Articles/335942/"
-    url      = "https://github.com/gweodoo/pahole/archive/v1.12.tar.gz"
+    homepage = "https://git.kernel.org/pub/scm/devel/pahole/pahole.git/about/"
+    url      = "https://git.kernel.org/pub/scm/devel/pahole/pahole.git/snapshot/pahole-1.12.tar.gz"
 
     # FIXME: Add proper versions and checksums here.
     version('1.12',    sha256='2452464cbfdbaece6187d7860000fe8ef24b7271f88122cf540d3e0ab4a644d1')
